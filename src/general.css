@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+img, canvas, iframe, video, picture {
+    max-width: 100%;
+    display: block;
+}
+
+body {
+    display: flex;
+}
+
+@font-face {
+    font-family: 'Roboto'; 
+    src: url('./fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+    font-weight: normal;
+    font-style: normal;
+}

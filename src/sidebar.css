@@ -1,0 +1,113 @@
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: gray;
+    padding: 12px;
+}
+
+.user-area {
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 12px;
+}
+
+.user-profile img {
+    height: 100%; 
+    width: auto; 
+    border-radius: 50%; 
+}
+
+.user-name {
+    display: flex;
+    gap: 2px;
+}
+
+.user-name img {
+    height: 1em; 
+    width: auto;
+}
+
+.user-toolbelt {
+    display: flex;
+    align-items: center;
+
+}
+
+.user-toolbelt img{
+    height: 2em;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+.sidebar-content img{
+    height: 1.5em;
+}
+
+.option {
+    display: flex;
+    gap: 5px;
+}
+
+
+/* BUTTON */
+
+.create-project-btn {
+    /* Grundlegende Layout-Styles */
+    height: 40px;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Design & Farben */
+    background-color: #238636;
+    color: white;
+    border: 1px solid rgba(27, 31, 36, 0.15);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    /* Wichtig: Verhindert unschöne Standard-Styles */
+    font-family: inherit; 
+    outline: none;
+}
+
+/* Hover-Effekt (ersetzt dein onmouseover) */
+.create-project-btn:hover {
+    background-color: #2ea043;
+}
+
+/* Optional: Klick-Effekt (Active State) */
+.create-project-btn:active {
+    background-color: #238636;
+    transform: translateY(1px);
+}
+
+.projects-list {
+    padding-left: 28px;
+}
+
