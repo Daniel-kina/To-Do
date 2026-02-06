@@ -1,4 +1,4 @@
-
+/*
 .sidebar {
     width: 300px;
     height: 100vh;
@@ -69,6 +69,7 @@
     gap: 5px;
 }
 
+*/
 
 /* BUTTON */
 
@@ -111,3 +112,159 @@
     padding-left: 28px;
 }
 
+/* GEMINI */
+
+/* 1. Basic Setup & Fonts */
+.sidebar {
+    width: 280px;            /* Fixed width for the sidebar */
+    height: 100vh;           /* Full height of the viewport */
+    background-color: #fafafa; /* Light grey background */
+    border-right: 1px solid #e0e0e0; /* Subtle separator line */
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+}
+
+/* 2. User Profile Area (Top) */
+.user-area {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Optional: Subtle bottom border */
+    /* border-bottom: 1px solid #eee; */ 
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between avatar and name */
+    cursor: pointer;
+}
+
+.user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Makes the avatar circular */
+    object-fit: cover;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Icons in the top right */
+.user-toolbelt {
+    display: flex;
+    gap: 15px;
+}
+
+.user-toolbelt img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6; /* Slight transparency for un-hovered icons */
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.user-toolbelt img:hover {
+    opacity: 1;
+}
+
+/* 3. Main Content Area */
+.sidebar-content {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between 'Tools' and 'Projects' sections */
+}
+
+/* 4. Menu Options (The navigation items) */
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    color: #444;
+}
+
+.option:hover {
+    background-color: #eee; /* Grey background on hover */
+}
+
+.option img {
+    width: 20px;
+    height: 20px;
+}
+
+/* 5. Projects Section */
+.projects-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The "Meine Projekte" Header */
+.option.project {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* The list of projects */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.project-title {
+    padding: 8px 10px 8px 42px; /* Left padding indents it to align with text above */
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.project-title:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+/* 6. Create Project Button */
+#create-project-btn-wrapper {
+    margin-top: 10px;
+    padding-left: 10px; /* Align with general content */
+}
+
+.create-project-btn {
+    background: transparent;
+    border: none;
+    color: #db4c3f; /* Todoist Red - or choose your own color */
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.create-project-btn:hover {
+    text-decoration: underline;
+}
+
+/* Add a plus sign before the button text using CSS */
+.create-project-btn::before {
+    content: "+";
+    margin-right: 8px;
+    font-size: 18px;
+    line-height: 1;
+}

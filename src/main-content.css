@@ -368,3 +368,145 @@ dialog::backdrop {
 #create-todo-btn:hover {
     background-color: #2ea043;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1. Das Modal-Fenster selbst */
+#project-modal {
+    border: none;
+    border-radius: 12px; /* Moderne abgerundete Ecken */
+    padding: 0; /* Wir nutzen Padding im Formular */
+    width: 90%;
+    max-width: 450px; /* Nicht zu breit */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2); /* Tiefer Schatten für "Schwebe"-Effekt */
+    background-color: white;
+    
+    /* Animation beim Öffnen (optional, aber schick) */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+/* Wenn das Modal offen ist (Browser setzt das Attribut 'open') */
+#project-modal[open] {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* 2. Der Hintergrund (Backdrop) */
+#project-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.6); /* Dunkelt den Rest ab */
+    backdrop-filter: blur(3px); /* Weichzeichner für den Hintergrund */
+}
+
+/* 3. Das Formular Layout */
+#create-project-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Abstand zwischen den Feldern */
+}
+
+/* Überschrift */
+#create-project-form h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    color: #24292f;
+}
+
+/* 4. Eingabefelder (Input & Textarea) */
+#project-title,
+#project-description {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit; /* Nimm die Roboto Font */
+    transition: all 0.2s;
+    background-color: #f6f8fa; /* Leichtes Grau, wirkt moderner */
+}
+
+/* Wenn man in das Feld klickt */
+#project-title:focus,
+#project-description:focus {
+    background-color: white;
+    border-color: #238636; /* Dein Sidebar-Grün */
+    outline: none; /* Entfernt den hässlichen Standard-Rahmen */
+    box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.15); /* Grüner Schimmer */
+}
+
+#project-description {
+    min-height: 100px;
+    resize: vertical; /* Erlaubt nur ziehen nach unten, nicht zur Seite */
+}
+
+/* 5. Buttons Bereich */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end; /* Rechtsbündig */
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Gemeinsamer Style für beide Buttons */
+.modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Abbrechen Button (Sekundär) */
+#close-modal {
+    background-color: transparent;
+    border: 1px solid #d0d7de;
+    color: #57606a;
+}
+
+#close-modal:hover {
+    background-color: #f3f4f6;
+    color: #24292f;
+}
+
+/* Erstellen Button (Primär) */
+#create-project {
+    background-color: #238636; /* Dein Sidebar-Grün */
+    color: white;
+    border: 1px solid rgba(27, 31, 36, 0.15);
+}
+
+#create-project:hover {
+    background-color: #2ea043;
+}

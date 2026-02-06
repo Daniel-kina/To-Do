@@ -6,8 +6,13 @@ import Project from "./project.js";
 import Todo from "./todo.js";
 import {createProjectModal,createNoProjects,createTodoModal,createEditTodoModal,createTodoDiv} from "./createDom.js";
 
+
+
+
 let myProjects = [];
 let activeProject = null;
+loadProjects();
+
 
 
 
@@ -62,7 +67,9 @@ function displayProjectModal() {
 function createProject(projectTitle,projectDescription = "") {
     const project = new Project(projectTitle,projectDescription);
     myProjects.push(project);
+    saveProjects(); 
     displayProjects();
+
 
 }
 
@@ -117,7 +124,7 @@ function displayToDo(id) {
         
         const deleteBtn = todoDiv.querySelector(".delete");
         const editBtn = todoDiv.querySelector(".edit");
-        const todoCheckedBtn = document.querySelector(".todo-btn");
+        const todoCheckedBtn = todoDiv.querySelector(".todo-btn");
 
         deleteBtn.addEventListener("click",(event) => {
             const todo = event.target.closest(".todo");
@@ -126,7 +133,7 @@ function displayToDo(id) {
             const todoId = todo.dataset.id;
 
             activeProject.removeTodo(todoId);
-
+            saveProjects();
         })
 
         //---------------------------------------------------------------------------------------------------
@@ -135,6 +142,7 @@ function displayToDo(id) {
             const todoId = todo.dataset.id;
 
             displayEditTodoModal(todoId);
+            saveProjects();
             
         });
 
@@ -143,7 +151,9 @@ function displayToDo(id) {
             const todoId = todo.dataset.id;
             changeColorTodoBtn(todoCheckedBtn,todoId);
             activeProject.checkTodo(todoId);
+            saveProjects();
             displayToDo(activeProject.id);
+            
 
             
         });
@@ -177,6 +187,7 @@ function displayToDoModal() {
                 createTodo(form);
                 displayToDo(activeProject.id);
                 todoModal.remove();
+                saveProjects();
             
             
         });
@@ -221,6 +232,7 @@ function createTodo(form) {
     const todo = new Todo(todoTitle,todoDate,todoPriority,todoNote);
 
     activeProject.createTodo(todo.title,todo.dueDate,todo.priority,todo.note);
+    saveProjects();
 }
 
 function updateTodo(todoId,form) {
@@ -230,6 +242,7 @@ function updateTodo(todoId,form) {
     const todoNote = form.querySelector("#todo-note").value;
 
     activeProject.editTodo(todoId,todoTitle,todoDate,todoPriority,todoNote);
+    saveProjects();
 }
 
 function changeColorTodoBtn(todoCheckedBtn,todoId) {
@@ -254,4 +267,35 @@ function changeColorTodoBtn(todoCheckedBtn,todoId) {
     }
 
     
+}
+
+function saveProjects() {
+    localStorage.setItem("myProjects", JSON.stringify(myProjects));
+}
+
+function loadProjects() {
+    const data = localStorage.getItem("myProjects");
+
+    if (data) {
+        const plainProjects = JSON.parse(data);
+
+        myProjects = plainProjects.map(plainProject => {
+            const project = new Project(plainProject.title,plainProject.description);
+            project.id = plainProject.id;
+
+            if (plainProject.todos) {
+                project.todos = plainProject.todos.map(plainTodo => {
+                    const todo = new Todo(plainTodo.title, plainTodo.dueDate, plainTodo.priority, plainTodo.note); //
+                    todo.id = plainTodo.id;
+                    todo.checked = plainTodo.checked;
+                    return todo;
+                });
+            }
+
+            return project
+
+        })
+        displayProjects();
+
+    }
 }
